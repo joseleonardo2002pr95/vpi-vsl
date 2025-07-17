@@ -1,0 +1,9 @@
+{
+    "name": "vpi-vsl",
+    "version": "1.0.0",
+    "scripts": {
+      "start": "npx serve -s ."
+    },
+    "dependencies": {}
+  }
+  
