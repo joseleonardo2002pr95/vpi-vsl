@@ -2,8 +2,10 @@
     "name": "vpi-vsl",
     "version": "1.0.0",
     "scripts": {
-      "start": "npx serve -s ."
+      "start": "serve -s ."
     },
-    "dependencies": {}
+    "dependencies": {
+      "serve": "^14.2.0"
+    }
   }
   
