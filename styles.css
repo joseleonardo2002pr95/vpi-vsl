@@ -1,0 +1,269 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #F5F6FA;
+    min-height: 100vh;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Header */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #0A3B7A;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 50;
+}
+
+.header .container {
+    padding: 0.75rem 1rem;
+}
+
+.header-title {
+    color: white;
+    font-size: 1.125rem;
+    font-weight: 700;
+    text-align: center;
+    margin: 0;
+}
+
+/* Main content */
+.main-content {
+    padding-top: 4rem;
+}
+
+/* Headline section */
+.headline-section {
+    background-color: #F5F6FA;
+    padding: 3rem 1rem;
+}
+
+.headline {
+    color: #0A3B7A;
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.2;
+    margin: 0 auto;
+    max-width: 64rem;
+    animation: fade-in 0.8s ease-out;
+}
+
+/* VSL section */
+.vsl-section {
+    background-color: #F5F6FA;
+    padding: 0 1rem 3rem;
+}
+
+.video-intro {
+    color: #1351B4;
+    font-size: 1.125rem;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 2rem;
+    animation: fade-in 0.8s ease-out 0.3s both;
+}
+
+/* Video container */
+.video-container {
+    max-width: 50rem;
+    margin: 0 auto;
+    animation: fade-in 0.8s ease-out 0.6s both;
+}
+
+.video-wrapper {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.video-player {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    transition: all 0.3s ease;
+    border-radius: 0.5rem;
+}
+
+.video-player:focus {
+    outline: 2px solid #1351B4;
+    outline-offset: 2px;
+}
+
+.video-fallback {
+    padding: 2rem;
+    color: #0A3B7A;
+    text-align: center;
+}
+
+.video-link {
+    color: #1351B4;
+    text-decoration: underline;
+    margin-left: 0.25rem;
+}
+
+.video-link:hover {
+    color: #0A3B7A;
+}
+
+/* Animations */
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #F5F6FA;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #1351B4;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #0A3B7A;
+}
+
+/* Loading state for video */
+video:not([src]):not([srcset]) {
+    background: linear-gradient(90deg, #f0f0f0 25%, transparent 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    .headline {
+        font-size: 1.5rem;
+    }
+    
+    .video-intro {
+        font-size: 1rem;
+    }
+    
+    .headline-section {
+        padding: 2rem 1rem;
+    }
+    
+    .vsl-section {
+        padding: 0 1rem 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .headline {
+        font-size: 1.25rem;
+        line-height: 1.3;
+    }
+    
+    .header-title {
+        font-size: 1rem;
+    }
+    
+    .video-intro {
+        font-size: 0.875rem;
+        margin-bottom: 1.5rem;
+    }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+    .headline,
+    .video-intro,
+    .video-container {
+        animation: none;
+    }
+    
+    .video-player {
+        transition: none;
+    }
+    
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .headline-section,
+    .vsl-section {
+        background-color: #ffffff;
+    }
+    
+    .video-intro {
+        color: #000080;
+    }
+    
+    .headline {
+        color: #000060;
+    }
+}
+
+/* Print styles */
+@media print {
+    .header {
+        position: static;
+        box-shadow: none;
+    }
+    
+    .main-content {
+        padding-top: 0;
+    }
+    
+    .video-container {
+        display: none;
+    }
+    
+    .video-intro::after {
+        content: " (Vídeo não disponível na versão impressa)";
+        font-style: italic;
+        color: #666;
+    }
+}
